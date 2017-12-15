@@ -1,0 +1,55 @@
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	line-height: 1.5;
+	padding: 0;
+	margin: 0;
+	/*background: linear-gradient(to bottom, #00ffff 0%, #ff66ff 125%);*/
+}
+
+.jumbotron {
+	padding-top: 50px;
+	padding: 50px;
+	background: none;
+}
+
+.container{ 
+	width: 100%; /* responsiivinen, joten ei tiettyjä pikselikokoja vaan prosentti */
+	margin: auto; /* kaikki keskelle */
+	overflow: hidden; /* jos joku menee divin ulkopuolelle niin ei skrollbaria vaan piilotetaan*/
+}
+
+#reviewspot{
+	padding-top: 50px;
+}
+
+#picturecontainer{
+	margin: 10px;
+	padding-right: 10px;
+}
+
+#sampleimage{
+
+	max-width: 250px;
+	max-height: 500px;
+}
+
+#review{
+	min-height: 100px;
+	padding-bottom: 10px;
+}
+
+#main-footer{
+	position: absolute;
+	max-height: 50px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	text-align: center;
+	font-size: 16px;
+	font-color: #ffffff;
+	background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
+	background-color: #222;
+}
