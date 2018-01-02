@@ -20,6 +20,7 @@ CREATE TABLE `reviews` (
   `author` varchar(100) NOT NULL,
   `id_item` int(11) NOT NULL,
   `review` text NOT NULL,
+  `avatar_url` text,
   `rating` int(11) NOT NULL,
   `time` datetime NOT NULL,
   `thumbs_up` int(11) DEFAULT NULL,
