@@ -134,24 +134,36 @@
         <div id="reviewspot">
           <div class="container">
             <h3>Add a Review!</h3>
-            <form action="localhost/wt/insert.php" method="post">
+            <form id="add-review-form">
+              <div class="form-group">
+                  <label>Movie/Serie</label>
+                  <select id="id_item" name="id_item" class="form-control">
+                    <option>Select</option>
+                  </select>
+                </div>
               <div class="form-group">
                 <label>Author</label>
-                <input type="text" class="form-control" placeholder="Name">
+                <input name="author" type="text" class="form-control" placeholder="Name">
               </div>
               <div class="form-group">
                 <label>Avatar URL </label>
-                <input type="text" class="form-control" placeholder="Avatar URL">
+                <input name="avatar_url" type="text" class="form-control" placeholder="Avatar URL">
               </div>
               <div class="form-group">
                 <label>Review</label>
-                <textarea class="form-control" id="review" placeholder="Write your review! Max 1000 words"></textarea>
+                <textarea name="review" class="form-control" id="review" placeholder="Write your review! Max 1000 words"></textarea>
               </div>
-            </form>
-            <div>
+              <div class="form-group">
+                <label>Rating</label>
+                <input name="rating" type="number" max="10" min="1" class="form-control" placeholder="Your rating">
+              </div>
+              <div>
               <button class="btn btn-default" type="submit">Send</button>
             </div>
-
+            <div style="margin:10px 0; display:none;" id="review-success-alert" class="alert alert-success">
+                  <strong>Review added!</strong>
+            </div>
+            </form>
           </div>
         </div>
 
@@ -173,9 +185,7 @@
       <script type="text/javascript">
         const defaultImage = "./sample.jpg";
         $("#preview-img-url").change(function (){
-          console.log("perkele");
           var url = $(this).val();
-          console.log($(this).val());
           $("#item-image").attr("src", url || defaultImage);
         });
 
@@ -198,5 +208,35 @@
             }
           })
         });
+
+        $("#add-review-form").submit(function (event){
+          event.preventDefault();
+          const value = $("#add-review-form").serialize();
+          $.ajax({
+            type: "POST",
+            url: "insert_review.php",
+            data: value,
+            success: function(){
+              $("#review-success-alert").show("slow");
+              window.setTimeout(function (){
+                $("#review-success-alert").hide("slow");
+              }, 2000);
+              console.log("SUKSESS");
+            },
+            error: function(){
+              console.log("EPICFAIL");
+            }
+          })
+        });
+
+        $.get(
+          "get_items.php", function (data, status){
+            const array = JSON.parse(data);
+            array.forEach(function (val){
+              $("#id_item").append(new Option(val.name, val.id, true, true));
+            });
+          });
+
+
       </script>
 
