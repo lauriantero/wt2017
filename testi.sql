@@ -9,8 +9,6 @@ CREATE TABLE `items` (
   `year` int(11) DEFAULT NULL,
   `picture` text,
   `trailer` text,
-  `overall_rating` double DEFAULT NULL,
-  `overall_reviews` int(11) DEFAULT NULL,
   `type` enum('movies','series') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
