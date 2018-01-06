@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Meta headline -->
   <title>Movies/Series Tracker</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -11,119 +12,90 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a href="#" class="navbar-brand">Movie/Series Tracker</a>
-      </div>
+  <!-- Header Navbar -->
+  <section>
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a id="index" href="index.html" class="load-content navbar-brand">Movie/Serie Tracker</a>
+				</div>
+		
+				<form class="navbar-form navbar-right" role="search">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Search for a title" name="srch-term" id="srch-term">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						</div>
+					  </div>
+				</form>
+		
+				<div class="collapse navbar-collapse navbar-left" id="navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+							<button class="btn navbar-btn btn-inv dropdown-toggle" data-toggle="dropdown">Movies
+						    <span class="caret"></span></button>
+						    <ul class="dropdown-menu">
+						    	<li><a href="content/test.html" id="add_movie">Add New Movie</a></li>
+						    	<li><a href="content/test.html" id="most_recent_movie">View Most Recent Movies</a></li>
+								<li><a href="content/test.html" id="top_rated_movie">View Top Rated Movies</a></li>
+								<li><a href="content/test.html" id="top_reviews_movie">View Top Reviews Movies</a></li>
+						    </ul>
+						</li>
+						<li class="dropdown">
+							<button class="btn navbar-btn btn-inv dropdown-toggle" data-toggle="dropdown">Series
+						    <span class="caret"></span></button>
+						    <ul class="dropdown-menu">
+						    	<li><a href="content/test.html" id="add_movie_serie">Add New Serie</a></li>
+						    	<li><a href="content/test.html" id="most_recent_serie">View Most Recent Series</a></li>
+								<li><a href="content/test.html" id="top_rated_serie">View Top Rated Series</a></li>
+								<li><a href="content/test.html" id="top_reviews_serie">View Top Reviews Series</a></li>
+						  	</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
 
 
-      <form class="navbar-form navbar-right" role="search">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-          <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-          </div>
-        </div>
-      </form>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#register">Register</a></li>
-        <li><a href="#login">Login</a></li>
-      </ul>
-
-      <div class="collapse navbar-collapse navbar-left" id="navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="#home">Home</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#movies">Movies
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#top_rated">Top rated</a></li>
-                <li><a href="#most_recent">Most Recent</a></li>
-                <li><a href="#top_reviews">Top reviews</a></li>
-              </ul>
-            </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#series">Series
-                <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#top_rated">Top rated</a></li>
-                  <li><a href="#most_recent">Most Recent</a></li>
-                  <li><a href="#top_reviews">Top reviews</a></li>
-                </ul>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-      </nav>
-
-
-      <!-- Adding a movie/serie -->
+      <!-- Previewing a movie/serie -->
       <div class="jumbotron">
        <!-- <div class="container-fluid"> -->
-        <h3 class="text-center">Add a movie/serie</h3>
-        <br>
+        <h3 class="text-center">&nbsp;</h3>
         <div class="row">
 
           <!-- Image for the movie/serie -->
           <div class="col-md-3 tile tile-left">
             <div class="container" id="picturecontainer">
-              <a href="./sample.jpg">
-                <img id="item-image" src="./sample.jpg" alt="Sample Image">
-              </a>
+              <a href="css/Placeholder.png"><img id="item-image" src="css/Placeholder.png" alt="Sample Image"></a>
             </div>
           </div>
 
-          <!-- Movie/serie data form -->
+          <!-- Movie/serie data fetched from database -->
           <div class="col-md-9 tile tile-right">
             <div class="container">
               <form id="add-item-form">
-                <div class="form-group">
-                  <label>Type</label>
-                  <select name="type" class="form-control">
-                    <option value="movies">Movie</option>
-                    <option value="series">Serie</option>
-                  </select>
+                <br>
+                <div class="form-group"> <!-- get the name and year of the movie/serie from database -->
+                    Name + (Year)
                 </div>
 
-                <div class="form-group">
-                  <label>Name of the item</label>
-                  <input name="name" type="text" class="form-control" placeholder="Movie/serie Name">
+                <div class="form-group glyphicon glyphicon-star-empty"> <!-- calculate median of all user reviews (reviews from database divided by number of reviews) -->
+                    User Rating:
                 </div>
 
-                <div class="form-group">
-                  <label>Year of making </label>
-                  <input name="year" type="text" class="form-control" placeholder="Year">
-                </div>
-
-                <div class="form-group">
-                  <label>Picture URL from the internetz</label>
-                  <input name="picture" id="preview-img-url" type="text" class="form-control" placeholder="URL for the picture">
-                </div>
-
-                <div class="form-group">
-                  <label>Trailer</label>
-                  <input name="trailer" type="text" class="form-control" placeholder="URL for the trailer">
+                <div class="form-group"> <!-- get the number of reviews from database -->
+                    Number of Reviews
                 </div>
 
                 <div>
-                  <button class="btn btn-default" type="submit">Add</button>
-                </div>
-
-                <div style="margin:10px 0; display:none;" id="success-alert" class="alert alert-success">
-                  <strong>Item added!</strong>
+                  <button class="btn btn-default" type="submit">Add Review</button> <!-- navigate to Add Review view -->
                 </div>
               </form>
             </div>
@@ -131,112 +103,43 @@
         </div>
 
         <!-- Review area -->
-        <div id="reviewspot">
+        <div id="showreviews">
           <div class="container">
-            <h3>Add a Review!</h3>
             <form id="add-review-form">
-              <div class="form-group">
-                  <label>Movie/Serie</label>
-                  <select id="id_item" name="id_item" class="form-control">
-                    <option>Select</option>
-                  </select>
-                </div>
-              <div class="form-group">
-                <label>Author</label>
-                <input name="author" type="text" class="form-control" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label>Avatar URL </label>
-                <input name="avatar_url" type="text" class="form-control" placeholder="Avatar URL">
-              </div>
-              <div class="form-group">
-                <label>Review</label>
-                <textarea name="review" class="form-control" id="review" placeholder="Write your review! Max 1000 words"></textarea>
-              </div>
-              <div class="form-group">
-                <label>Rating</label>
-                <input name="rating" type="number" max="10" min="1" class="form-control" placeholder="Your rating">
-              </div>
-              <div>
-              <button class="btn btn-default" type="submit">Send</button>
-            </div>
-            <div style="margin:10px 0; display:none;" id="review-success-alert" class="alert alert-success">
-                  <strong>Review added!</strong>
-            </div>
+              <div class="form-group"> <!-- get the user reviews connected to movie/serie ID from database -->
+                <br>
+                    <!-- Image for the movie/serie -->
+                    <div class="container" id="avatarcontainer"><a href="css/sample.jpg"><img id="avatar-image" src="css/sample.jpg" alt="Sample Image"></a>
+                    &nbsp;Username:&nbsp;<div class="glyphicon">User-Review&nbsp;</div></div>
+                    <div class="glyphicon glyphicon-star-empty">&nbsp;User-Given-Review&nbsp;</div><div class="glyphicon glyphicon-thumbs-up">&nbsp;Thumbs-Up-Count&nbsp;</div>
+                    <div class="glyphicon glyphicon-thumbs-down">&nbsp;Thumbs-Down-Count&nbsp;</div>
+                    </div>
+                <br>
             </form>
+            Trailer URL will be fetched from database, if there is none won't be showed (with javascript if url !="" ...)<br>
+            <iframe width="427" height="240" src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
           </div>
+          <br>TODO: The background stops too soon?! Where will we put the trailer?
         </div>
 
-        <script type="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <!-- Optional JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      </body>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <!-- Our Own JavaScript -->
+	      <script src="content/js/history.js"></script>
+
       <br>
-
-      <!-- Bad Footer -->
-      <div id="main-footer">
-        <footer>
-    		Movie/Series Tracker &copy; Deathliners 2017
-        </footer>
-      </div>
-
-      </html>
-
-      <script type="text/javascript">
-        const defaultImage = "./sample.jpg";
-        $("#preview-img-url").change(function (){
-          var url = $(this).val();
-          $("#item-image").attr("src", url || defaultImage);
-        });
-
-        $("#add-item-form").submit(function (event){
-          event.preventDefault();
-          const value = $("#add-item-form").serialize();
-          $.ajax({
-            type: "POST",
-            url: "insert_item.php", 
-            data: value, 
-            success: function(){
-              $("#success-alert").show("slow");
-              window.setTimeout(function (){
-                $("#success-alert").hide("slow");
-              }, 2000);
-              console.log("SUKSESS");
-            },
-            error: function(){
-              console.log("EPICFAIL");
-            }
-          })
-        });
-
-        $("#add-review-form").submit(function (event){
-          event.preventDefault();
-          const value = $("#add-review-form").serialize();
-          $.ajax({
-            type: "POST",
-            url: "insert_review.php",
-            data: value,
-            success: function(){
-              $("#review-success-alert").show("slow");
-              window.setTimeout(function (){
-                $("#review-success-alert").hide("slow");
-              }, 2000);
-              console.log("SUKSESS");
-            },
-            error: function(){
-              console.log("EPICFAIL");
-            }
-          })
-        });
-
-        $.get(
-          "get_items.php", function (data, status){
-            const array = JSON.parse(data);
-            array.forEach(function (val){
-              $("#id_item").append(new Option(val.name, val.id, true, true));
-            });
-          });
-
-
-      </script>
-
+      
+      <!-- Footer -->
+    	<footer class="text-center" id="main-footer">
+        <div class="footer-above">
+              <a id="about" href="content/about.html" class="load-content navbar-brand">About</a>
+              <a id="terms" href="content/terms.html" class="load-content navbar-brand">Terms and Conditions</a>
+              <a id="faq" href="content/faq.html" class="load-content navbar-brand">FAQ</a>
+              <a id="contact" href="content/contact.html" class="load-content navbar-brand">Contact Us</a>
+              Movie/Series Tracker &copy; Deathliners 2017 [TODO: THIS SHOULD BE AT THE BUTTOM OF EVERYTHING AND THE LINKS SHOULD BE CENTERED]
+        </div>
+      </footer>
+</body>
+</html>
