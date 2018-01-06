@@ -20,6 +20,7 @@ img {
 }
 
 footer {
+	display: inline-block;
 	margin-top: auto;
 	bottom: 0;
     color: #ffe1859a;
@@ -50,6 +51,16 @@ a.navbar-brand:hover {
 
 a.navbar-brand:focus {
 	color: #ffffff;
+}
+
+a:hover {
+	color: #ffffff;
+	text-decoration:none;  
+}
+
+a:focus {
+	color: #ffffff;
+	text-decoration:none;  
 }
 
 .navbar-inverse .navbar-brand {
@@ -104,4 +115,8 @@ a.navbar-brand:focus {
 }
 .btn-inv:focus {
 	color: #ffffff;
+}
+
+.footer-content {
+	margin-right: 10px;
 }
