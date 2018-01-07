@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Movies/Series Tracker</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">Movie/Series Tracker</a>
+      </div>
+
+
+      <form class="navbar-form navbar-right" role="search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </div>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#register">Register</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+
+      <div class="collapse navbar-collapse navbar-left" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#home">Home</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#movies">Movies
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#top_rated">Top rated</a></li>
+                <li><a href="#most_recent">Most Recent</a></li>
+                <li><a href="#top_reviews">Top reviews</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#series">Series
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#top_rated">Top rated</a></li>
+                  <li><a href="#most_recent">Most Recent</a></li>
+                  <li><a href="#top_reviews">Top reviews</a></li>
+                </ul>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
+
+      <!-- Adding a movie/serie -->
+      <div class="jumbotron">
+       <!-- <div class="container-fluid"> -->
+        <h3 class="text-center">Add a movie/serie</h3>
+        <br>
+        <div class="row">
+
+          <!-- Image for the movie/serie -->
+          <div class="col-md-3 tile tile-left">
+            <div class="container" id="picturecontainer">
+              <a href="./sample.jpg">
+                <img id="item-image" src="./sample.jpg" alt="Sample Image">
+              </a>
+            </div>
+          </div>
+
+          <!-- Movie/serie data form -->
+          <div class="col-md-9 tile tile-right">
+            <div class="container">
+              <form id="add-item-form">
+                <div class="form-group">
+                  <label>Type</label>
+                  <select name="type" class="form-control">
+                    <option value="movies">Movie</option>
+                    <option value="series">Serie</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Name of the item</label>
+                  <input name="name" type="text" class="form-control" placeholder="Movie/serie Name">
+                </div>
+
+                <div class="form-group">
+                  <label>Year of making </label>
+                  <input name="year" type="text" class="form-control" placeholder="Year">
+                </div>
+
+                <div class="form-group">
+                  <label>Picture URL from the internetz</label>
+                  <input name="picture" id="preview-img-url" type="text" class="form-control" placeholder="URL for the picture">
+                </div>
+
+                <div class="form-group">
+                  <label>Trailer</label>
+                  <input name="trailer" type="text" class="form-control" placeholder="URL for the trailer">
+                </div>
+
+                <div>
+                  <button class="btn btn-default" type="submit">Add</button>
+                </div>
+
+                <div style="margin:10px 0; display:none;" id="success-alert" class="alert alert-success">
+                  <strong>Item added!</strong>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review area -->
+        <div id="reviewspot">
+          <div class="container">
+            <h3>Add a Review!</h3>
+            <form id="add-review-form">
+              <div class="form-group">
+                  <label>Movie/Serie</label>
+                  <select id="id_item" name="id_item" class="form-control">
+                    <option>Select</option>
+                  </select>
+                </div>
+              <div class="form-group">
+                <label>Author</label>
+                <input name="author" type="text" class="form-control" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label>Avatar URL </label>
+                <input name="avatar_url" type="text" class="form-control" placeholder="Avatar URL">
+              </div>
+              <div class="form-group">
+                <label>Review</label>
+                <textarea name="review" class="form-control" id="review" placeholder="Write your review! Max 1000 words"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Rating</label>
+                <input name="rating" type="number" max="10" min="1" class="form-control" placeholder="Your rating">
+              </div>
+              <div>
+              <button class="btn btn-default" type="submit">Send</button>
+            </div>
+            <div style="margin:10px 0; display:none;" id="review-success-alert" class="alert alert-success">
+                  <strong>Review added!</strong>
+            </div>
+            </form>
+          </div>
+        </div>
+
+        <script type="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!-- Optional JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      </body>
+      <br>
+
+      <!-- Bad Footer -->
+      <div id="main-footer">
+        <footer>
+    		Movie/Series Tracker &copy; Deathliners 2017
+        </footer>
+      </div>
+
+      </html>
+
+      <script type="text/javascript">
+        const defaultImage = "./sample.jpg";
+        $("#preview-img-url").change(function (){
+          var url = $(this).val();
+          $("#item-image").attr("src", url || defaultImage);
+        });
+
+        $("#add-item-form").submit(function (event){
+          event.preventDefault();
+          const value = $("#add-item-form").serialize();
+          $.ajax({
+            type: "POST",
+            url: "insert_item.php", 
+            data: value, 
+            success: function(){
+              $("#success-alert").show("slow");
+              window.setTimeout(function (){
+                $("#success-alert").hide("slow");
+              }, 2000);
+              console.log("SUKSESS");
+            },
+            error: function(){
+              console.log("EPICFAIL");
+            }
+          })
+        });
+
+        $("#add-review-form").submit(function (event){
+          event.preventDefault();
+          const value = $("#add-review-form").serialize();
+          $.ajax({
+            type: "POST",
+            url: "insert_review.php",
+            data: value,
+            success: function(){
+              $("#review-success-alert").show("slow");
+              window.setTimeout(function (){
+                $("#review-success-alert").hide("slow");
+              }, 2000);
+              console.log("SUKSESS");
+            },
+            error: function(){
+              console.log("EPICFAIL");
+            }
+          })
+        });
+
+        $.get(
+          "get_items.php", function (data, status){
+            const array = JSON.parse(data);
+            array.forEach(function (val){
+              $("#id_item").append(new Option(val.name, val.id, true, true));
+            });
+          });
+
+
+      </script>
+
