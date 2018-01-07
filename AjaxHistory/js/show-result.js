@@ -9,10 +9,7 @@ $(document).ready(function(){
             if(response.indexOf("error") > -1){
                 alert("Wrong ID / Problem with server");
             } else {
-                console.log(response);
                 var myObj = JSON.parse(response);
-                console.log(myObj);
-                console.log(myObj[0].id);
                 document.getElementById("result-content").innerHTML = 
                 "<div class=\"row\"><div class=\"col-md-2 tile tile-left\"><img id=\"sampleimage\" src=\""
                 +myObj[0].picture+
@@ -27,14 +24,13 @@ $(document).ready(function(){
                 "</span></p><p>Overall reviews: <span class=\"stars\">"
                 +myObj[0].overall_reviews+
                 "</span></p></div></div><br/>"
-                console.log(myObj[0].trailer);
                 if(myObj[0].trailer){
                     document.getElementById("result-content").innerHTML += 
                     "<div class=\"row text-center\"><p>Trailer</p><iframe width=\"420\" height=\"315\" src=\""
                     +myObj[0].trailer+
                     "\"></iframe></div>"
-                    $('span.stars').stars();
                 }
+                $('span.stars').stars();
             }
         }
     });  
