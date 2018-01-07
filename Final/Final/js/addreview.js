@@ -25,8 +25,8 @@ $(document).ready(function(){
             data: item+"&"+$("#review-form").serialize(),
             success: function(response){
                 alert(response);
-                if(localStorage.getItem(item)){
-                    localStorage.removeItem(item);
+                if(localStorage.getItem($_GET('item'))){
+                    localStorage.removeItem($_GET('item'));
                 }
             }
         });  
