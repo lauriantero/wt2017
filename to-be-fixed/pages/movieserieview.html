@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Meta headline -->
+  <title>Movies/Series Tracker</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/ourstyles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+      <!-- Previewing a movie/serie -->
+      <div class="jumbotron">
+       <!-- <div class="container-fluid"> -->
+        <h3 class="text-center">&nbsp;</h3>
+        <div class="row">
+
+          <!-- Image for the movie/serie -->
+          <div class="col-md-3 tile tile-left">
+            <div class="container" id="picturecontainer">
+              <a href="img/Placeholder.png"><img id="item-image" src="img/Placeholder.png" alt="Sample Image"></a>
+            </div>
+          </div>
+
+          <!-- Movie/serie data fetched from database -->
+          <div class="col-md-9 tile tile-right">
+            <div class="container">
+              <form id="add-item-form">
+                <br>
+                <div class="form-group"> <!-- get the name and year of the movie/serie from database -->
+                    <p id="nameyear">Name + (Year)</p>
+                </div>
+
+                <div class="form-group glyphicon glyphicon-star-empty"> <!-- calculate median of all user reviews (reviews from database divided by number of reviews) -->
+                    <p id="rating">User Rating:</p>
+                </div>
+
+                <div class="form-group"> <!-- get the number of reviews from database -->
+                    <p id="reviews">Number of Reviews:</p>
+                </div>
+
+                <div>
+                  <button class="btn btn-default" type="submit">Add Review</button> <!-- navigate to Add Review view -->
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review area -->
+        <div id="showreviews">
+          <div class="container">
+            <form id="add-review-form">
+              <div class="form-group"> <!-- get the user reviews connected to movie/serie ID from database -->
+                <br>
+                    <!-- Image for the movie/serie -->
+                    <div class="container" id="avatarcontainer"><a href="img/sample.jpg"><img id="avatar-image" src="img/sample.jpg" alt="Sample Image"></a>
+                    &nbsp;Username:&nbsp;<div class="glyphicon">User-Review&nbsp;</div></div>
+                    <div class="glyphicon glyphicon-star-empty">&nbsp;User-Given-Review&nbsp;</div><div class="glyphicon glyphicon-thumbs-up">&nbsp;Thumbs-Up-Count&nbsp;</div>
+                    <div class="glyphicon glyphicon-thumbs-down">&nbsp;Thumbs-Down-Count&nbsp;</div>
+                    </div>
+                <br>
+            </form>
+            Trailer URL will be fetched from database, if there is none won't be showed (with javascript if url !="" ...)<br>
+            <iframe width="427" height="240" src="https://www.youtube.com/embed/EXeTwQWrcwY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+          </div>
+          <br>
+        </div>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <!-- Our Own JavaScript -->
+        <script src="content/js/history.js"></script>
+        <script src="content/js/fetching_items.js"></script>
+        <script src="content/js/fetching_reviews.js"></script>
+
+      <br>
+</body>
+</html>
