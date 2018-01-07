@@ -18,7 +18,7 @@
 		else if (mysqli_num_rows($res_c) > 0) {
 			echo "Entry already existing in database...";
 		} else {
-			$sql_a = "INSERT INTO items (name, year, picture, trailer, type) VALUES ('$name', '$year', '$picture', '$trailer', '$type')";
+			$sql_a = "INSERT INTO items (name, year, picture, trailer, overall_rating, overall_reviews, type) VALUES ('$name', '$year', '$picture', '$trailer', 0, 0, '$type')";
 
 			if(!mysqli_query($conn, $sql_a))
 			{

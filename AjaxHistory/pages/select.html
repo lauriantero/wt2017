@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Meta headline -->
+		<title>Movies/Series Tracker</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+		<!-- CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="	sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/ourstyles.css">
+	</head>
+	
+	<body>
+		<div class="jumbotron">
+			<div class="row">
+				<container id="search" class="text-center">
+					<form id="search-form" class="search-form" method="post">
+						<div class="form-group">
+						  <label>Search movies/series:</label>
+						  <input name="search" type="search" class="form-control" placeholder="Search" required>
+						</div>
+						<div>
+						  <button id="search-submit" class="btn btn-default" type="submit">Search</button>
+						</div>
+					 </form>
+					 <br/>
+					 <div id="found-content">
+					 </div>
+				</container>
+			</div>
+		</div>
+	</body>
+	<script src="js/search.js"></script>
+</html>

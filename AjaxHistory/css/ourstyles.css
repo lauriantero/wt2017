@@ -45,6 +45,10 @@ footer a {
 	text-shadow: 0 -1px 0 rgba(0,0,0,.25);
 }
 
+hr {
+	border-top: 1px solid #fff;
+}
+
 a.navbar-brand:hover {
 	color: #ffffff;
 }
@@ -119,4 +123,15 @@ a:focus {
 
 .footer-content {
 	margin-right: 10px;
+}
+
+span.stars, span.stars span {
+    display: block;
+    background: url(../img/stars.png) 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
 }
