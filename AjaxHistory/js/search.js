@@ -15,11 +15,14 @@ $(document).ready(function(){
             data: $("#search-form").serialize(),
             success: function(response){
                 if(response.indexOf("0 results") > -1){
+                    document.getElementById("found-content").innerHTML = '';
+                    $('input[name=bar-term]').val($('input[name=search]').val());
                     alert("No results found");
                 } else if(response.indexOf("error") > -1){
                     alert("Fields not properly completed!");
                 } else {
                     document.getElementById("found-content").innerHTML = '';
+                    $('input[name=bar-term]').val($('input[name=search]').val());
                     console.log(response);
                     var myObj = JSON.parse(response);
                     console.log(myObj);
