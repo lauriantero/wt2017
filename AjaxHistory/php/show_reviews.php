@@ -4,7 +4,7 @@
 	if(isset($_POST['item'])){
 		$item = htmlspecialchars($_POST['item']);
 
-		$sql = "SELECT * FROM items WHERE id = '$item'";
+		$sql = "SELECT * FROM reviews WHERE id_item = '$item'";
 		$result = $conn->query($sql);
 		$myObj = array();
 		$i = 0;
@@ -14,18 +14,19 @@
     		while($row = $result->fetch_assoc()) {
     			$myObj[$i] = new stdClass();
        			$myObj[$i]->id = $row["id"];
-       			$myObj[$i]->name = $row["name"];
-       			$myObj[$i]->year = $row["year"];
-          	$myObj[$i]->picture = $row["picture"];
-          	$myObj[$i]->trailer = $row["trailer"];
-          	$myObj[$i]->overall_rating = $row["overall_rating"];
-          	$myObj[$i]->type = $row["type"];
+            $myObj[$i]->avatar = $row["avatar"];
+       			$myObj[$i]->author = $row["author"];
+       			$myObj[$i]->review = $row["review"];
+          	$myObj[$i]->rating = $row["rating"];
+          	$myObj[$i]->time = $row["time"];
+          	$myObj[$i]->thumbs_up = $row["thumbs_up"];
+          	$myObj[$i]->thumbs_down = $row["thumbs_down"];
        			$i++;
     		}
     		$myJSON = json_encode($myObj);
     		echo $myJSON;
 		} else {
-    		echo "error";
+    		echo "No";
 		}
 	} else {
 		echo "error";

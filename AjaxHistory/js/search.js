@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     var search = $_GET('search');
+    document.getElementById("index").blur();
     $('input[name=search]').val(search);
 
     $("#search-submit").on("click",function(){    
